@@ -36,6 +36,34 @@
       .object-contain {
         object-fit: contain;
       }
+      #certificate-dialog {
+        position: fixed;
+        inset: 0;
+        margin: auto;
+        overflow: auto;
+        width: min(960px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem);
+        padding: 0; border: 1px solid #e2e8f0; border-radius: 1rem;
+        color: #0f172a; background: #fff; box-shadow: 0 24px 80px #0f172a40;
+      }
+      #certificate-dialog::backdrop { background: #0f172ab3; }
+      .certificate-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid #e2e8f0; }
+      #certificate-title { margin: 0; font-size: 1.125rem; font-weight: 700; }
+      #certificate-close { flex-shrink: 0; padding: .6rem .9rem; border: 1px solid #cbd5e1; border-radius: .5rem; background: #fff; cursor: pointer; }
+      .certificate-content { padding: 1.25rem; background: #f8fafc; }
+      #certificate-image { display: block; width: 100%; height: auto; }
+      #certificate-dialog.testdome-preview #certificate-image {
+        width: auto;
+        max-width: 100%;
+        max-height: max(80px, calc(100dvh - 14rem));
+        margin-inline: auto;
+        object-fit: contain;
+      }
+      #certificate-image[hidden], #certificate-status[hidden] { display: none; }
+      #certificate-status { padding: 2rem 0; text-align: center; color: #475569; }
+      .certificate-footer { padding: 1rem 1.25rem; border-top: 1px solid #e2e8f0; }
+      #certificate-verify { color: #6d28d9; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+      #certificate-dialog :focus-visible { outline: 2px solid #7c3aed; outline-offset: 4px; }
+      html.certificate-open { overflow: hidden; }
     </style>
   </head>
 
@@ -820,13 +848,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/azure-sql.webp" aria-haspopup="dialog"
                 href="https://www.coursera.org/account/accomplishments/certificate/J74N5CQ34D3Q"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >Microsoft Azure SQL <span aria-hidden="true">&nearr;</span></a
+                >Microsoft Azure SQL <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -835,13 +863,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/meta-databases.webp" aria-haspopup="dialog"
                 href="https://www.coursera.org/account/accomplishments/certificate/PV3DCD972CB3"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >Meta Introduction to Databases <span aria-hidden="true">&nearr;</span></a
+                >Meta Introduction to Databases <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -850,13 +878,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/ibm-sql.webp" aria-haspopup="dialog"
                 href="https://www.credly.com/badges/d844391d-141d-4838-addc-723cae3b1953/public_url"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >IBM Databases and SQL for Data Science <span aria-hidden="true">&nearr;</span></a
+                >IBM Databases and SQL for Data Science <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -865,13 +893,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/sql-relational.webp" aria-haspopup="dialog"
                 href="https://courses.cognitiveclass.ai/certificates/e07fa8f9d9ae477cbbf1b3ad62997bfb"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >SQL and Relational Databases 101 <span aria-hidden="true">&nearr;</span></a
+                >SQL and Relational Databases 101 <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -880,13 +908,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/hackerrank-sql.webp" aria-haspopup="dialog"
                 href="https://www.hackerrank.com/certificates/8fa5e3dead3f"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >HackerRank SQL Certificate <span aria-hidden="true">&nearr;</span></a
+                >HackerRank SQL Certificate <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -895,13 +923,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/testdome-mysql.png" aria-haspopup="dialog"
                 href="https://app.testdome.com/cert/c2cb3d3c35da4c7aa8c4f5be2a8f45e0"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >TestDome MySQL <span aria-hidden="true">&nearr;</span></a
+                >TestDome MySQL <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -910,13 +938,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/testdome-mssql.png" aria-haspopup="dialog"
                 href="https://app.testdome.com/cert/2b43e85056114323a06b4b0593b839bf"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >TestDome MS SQL Server <span aria-hidden="true">&nearr;</span></a
+                >TestDome MS SQL Server <span aria-hidden="true">&#128065;</span></a
               >
             </li>
             <li class="flex min-w-0 items-start gap-3 py-4 text-sm leading-6 font-medium">
@@ -925,13 +953,13 @@
                 class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-600 text-xs text-white"
                 >&#10003;</span
               >
-              <a
+              <a data-certificate-preview="certificates/oracle-plsql.webp" aria-haspopup="dialog"
                 href="https://www.youracclaim.com/badges/0bdf0ece-2e33-40d6-b0b5-ae0853a64644/linked_in_profile"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-w-0 text-slate-900 underline underline-offset-8 transition-colors hover:text-violet-700"
                 style="overflow-wrap: anywhere;"
-                >Oracle PL/SQL Developer Certified Associate <span aria-hidden="true">&nearr;</span></a
+                >Oracle PL/SQL Developer Certified Associate <span aria-hidden="true">&#128065;</span></a
               >
             </li>
         </ul>
@@ -978,5 +1006,19 @@
       <span>Akash Halder</span
       ><a href="#about" class="font-semibold text-violet-700">Back to top &uarr;</a>
     </footer>
+    <dialog id="certificate-dialog" aria-labelledby="certificate-title">
+      <div class="certificate-toolbar">
+        <h2 id="certificate-title">Certificate</h2>
+        <button id="certificate-close" type="button" aria-label="Close certificate viewer" autofocus>Close &times;</button>
+      </div>
+      <div class="certificate-content">
+        <p id="certificate-status" role="status">Loading certificate preview?</p>
+        <img id="certificate-image" alt="" hidden />
+      </div>
+      <div class="certificate-footer">
+        <a id="certificate-verify" target="_blank" rel="noopener noreferrer">Certificate Link <span aria-hidden="true">&nearr;</span></a>
+      </div>
+    </dialog>
+    <script src="/assets/certificate-viewer.js" defer></script>
   </body>
 </html>
